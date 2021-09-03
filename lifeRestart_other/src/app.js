@@ -55,9 +55,9 @@
             const talentPage = $(`
                 <div id="main">
                     <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
-                    <button id="random" class="mainbtn" style="top: 50%;">10连抽！</button>
+                    <button id="random" class="mainbtn" style="top: 50%;">无限！</button>
                     <ul id="talents" class="selectlist"></ul>
-                    <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
+                    <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">随便选</button>
                 </div>
             `);
 
@@ -86,8 +86,8 @@
                                 this.talentSelected.splice(inx,1);
                             }
                         } else {
-                            if(this.talentSelected.length==3) {
-                                this.hint('只能选3个天赋');
+                            if(this.talentSelected.length==131) {
+                                this.hint('随便选');
                                 return;
                             }
 
@@ -117,11 +117,11 @@
                 });
             }.bind(this));
             talentPage.find('#next').click(function (){
-                if(this.talentSelected.length!=3) {
-                    this.hint('请选择3个天赋');
+                if(this.talentSelected.length>131) {
+                    this.hint('...');
                     return;
                 }
-                this.totalMax = 20 + this.life.getTalentAllocationAddition(this.talentSelected.map(function(item){return item.id}));
+                this.totalMax = 2000 + this.life.getTalentAllocationAddition(this.talentSelected.map(function(item){return item.id}));
                 this.switch('property');
             }.bind(this));
 
@@ -192,10 +192,10 @@
                 return {group, get, set};
             }.bind(this);
 
-            groups.CHR = getBtnGroups("颜值", 0, 10); // 颜值 charm CHR
-            groups.INT = getBtnGroups("智力", 0, 10); // 智力 intelligence INT
-            groups.STR = getBtnGroups("体质", 0, 10); // 体质 strength STR
-            groups.MNY = getBtnGroups("家境", 0, 10); // 家境 money MNY
+            groups.CHR = getBtnGroups("颜值", 0, 2000); // 颜值 charm CHR
+            groups.INT = getBtnGroups("智力", 0, 2000); // 智力 intelligence INT
+            groups.STR = getBtnGroups("体质", 0, 2000); // 体质 strength STR
+            groups.MNY = getBtnGroups("家境", 0, 2000); // 家境 money MNY
 
             var ul = propertyPage.find('#propertyAllocation');
 
@@ -205,9 +205,9 @@
 
             propertyPage.find('#random').click(function (){
                 var t = this.totalMax;
-                var arr = [10, 10, 10, 10];
+                var arr = [2000, 2000, 2000, 2000];
                 while(t>0) {
-                    var sub = Math.round(Math.random() * (Math.min(t, 10) - 1)) + 1;
+                    var sub = Math.round(Math.random() * (Math.min(t, 2000) - 1)) + 1;
                     while(true) {
                         var select = Math.floor(Math.random() * 4) % 4;
                         if(arr[select] - sub <0) continue;
@@ -216,10 +216,10 @@
                         break;
                     }
                 }
-                groups.CHR.set(10 - arr[0]);
-                groups.INT.set(10 - arr[1]);
-                groups.STR.set(10 - arr[2]);
-                groups.MNY.set(10 - arr[3]);
+                groups.CHR.set(2000 - arr[0]);
+                groups.INT.set(2000 - arr[1]);
+                groups.STR.set(2000 - arr[2]);
+                groups.MNY.set(2000 - arr[3]);
             }.bind(this));
 
             propertyPage.find('#start').click(function (){
@@ -303,7 +303,7 @@
                 this.life.talentExtend(this.selectedExtendTalent);
                 this.selectedExtendTalent = null;
                 this.talentSelected=[];
-                this.totalMax = 20;
+                this.totalMax = 2000;
                 this.isEnd = false;
                 this.switch('index');
             }.bind(this));
@@ -340,7 +340,7 @@
                     clear: function (){
                         talentPage.find('ul.selectlist').empty();
                         talentPage.find('#random').show();
-                        this.totalMax = 20;
+                        this.totalMax = 2000;
                     }.bind(this),
                 },
                 property: {
