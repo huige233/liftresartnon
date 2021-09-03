@@ -9,7 +9,7 @@ class App{
     #life;
     #pages;
     #talentSelected = new Set();
-    #totalMax=2500;
+    #totalMax=20;
     #isEnd = false;
     #selectedExtendTalent = null;
     #hintTimeout;
@@ -30,8 +30,7 @@ class App{
         const loadingPage = $(`
         <div id="main">
             <div id="title">
-                人生重开模拟器(破解版？)<br>
-                <div style="font-size:1.5rem; font-weight:normal;">原版：http://liferestart.syaro.io/view/</div>
+                人生重开模拟器<br>
                 <div style="font-size:1.5rem; font-weight:normal;">加载中...</div>
             </div>
         </div>
@@ -43,9 +42,8 @@ class App{
             <div id="cnt" class="head">已重开1次</div>
             <button id="rank">排行榜</button>
             <div id="title">
-                人生重开模拟器(破解版？)<br>
-                <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了<br></div>
-                <div style="font-size:1.5rem; font-weight:normal;">原版：http://liferestart.syaro.io/view/</div>
+                人生重开模拟器<br>
+                <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>
             </div>
             <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>
         </div>
@@ -88,7 +86,7 @@ class App{
                                 this.#talentSelected.delete(talent);
                             } else {
                                 if(this.#talentSelected.size==131) {
-                                    this.hint('无限制选择');
+                                    this.hint('无限制');
                                     return;
                                 }
 
@@ -116,7 +114,7 @@ class App{
             .find('#next')
             .click(()=>{
                 if(this.#talentSelected.size>131) {
-                    this.hint('');
+                    this.hint('无限制');
                     return;
                 }
                 this.#totalMax = 2000 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
@@ -127,12 +125,11 @@ class App{
         const propertyPage = $(`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">
-                调整初始属性(请直接点数字框输入)<br>
+                调整初始属性<br>
                 <div id="total" style="font-size:1rem; font-weight:normal;">可用属性点：0</div>
             </div>
-			<ul id="propertyAllocation" class="propinitial"></ul>
-            <button id="random" class="mainbtn" style="top:auto; bottom:7rem">随机分配</button>
             <ul id="propertyAllocation" class="propinitial"></ul>
+            <button id="random" class="mainbtn" style="top:auto; bottom:7rem">随机分配</button>
             <button id="start" class="mainbtn" style="top:auto; bottom:0.1rem">开始新人生</button>
         </div>
         `);
@@ -152,7 +149,9 @@ class App{
             const btnSub = $(`<span class="iconfont propbtn">&#xe6a5;</span>`);
             const inputBox = $(`<input value="0">`);
             const btnAdd = $(`<span class="iconfont propbtn">&#xe6a6;</span>`);
+            group.append(btnSub);
             group.append(inputBox);
+            group.append(btnAdd);
 
             const limit = v=>{
                 v = Number(v)||0;
@@ -167,8 +166,8 @@ class App{
                 freshTotal();
             }
             btnAdd.click(()=>{
-                if(total() == this.#totalMax) {
-                    this.hint('没用可分配的点数了');
+                if(total() >= this.#totalMax) {
+                    this.hint('没有可分配的点数了');
                     return;
                 }
                 set(get()+1);
@@ -224,8 +223,11 @@ class App{
         propertyPage
             .find('#start')
             .click(()=>{
-                if(total()!=this.#totalMax) {
+                if(total() < this.#totalMax) {
                     this.hint(`你还有${this.#totalMax-total()}属性点没有分配完`);
+                    return;
+                } else if (total() > this.#totalMax) {
+                    this.hint(`你多使用了${total() - this.#totalMax}属性点`);
                     return;
                 }
                 this.#life.restart({
@@ -308,7 +310,7 @@ class App{
                 this.#life.talentExtend(this.#selectedExtendTalent);
                 this.#selectedExtendTalent = null;
                 this.#talentSelected.clear();
-                this.#totalMax = 2500;
+                this.#totalMax = 2000;
                 this.#isEnd = false;
                 this.switch('index');
             });
@@ -346,7 +348,7 @@ class App{
                 clear: ()=>{
                     talentPage.find('ul.selectlist').empty();
                     talentPage.find('#random').show();
-                    this.#totalMax = 2500;
+                    this.#totalMax = 2000;
                 },
             },
             property: {
