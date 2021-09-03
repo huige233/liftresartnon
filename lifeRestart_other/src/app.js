@@ -114,7 +114,7 @@ class App{
 
         talentPage
             .find('#next')
-            .click(()<={
+            .click(()=>{
                 if(this.#talentSelected.size!=10) {
                     this.hint('选择10个天赋');
                     return;
