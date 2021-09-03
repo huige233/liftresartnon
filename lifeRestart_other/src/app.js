@@ -87,7 +87,7 @@ class App{
                                 li.removeClass('selected')
                                 this.#talentSelected.delete(talent);
                             } else {
-                                if(this.#talentSelected.size<=10) {
+                                if(this.#talentSelected.size==10) {
                                     this.hint('选择10个以内天赋');
                                     return;
                                 }
@@ -115,8 +115,8 @@ class App{
         talentPage
             .find('#next')
             .click(()<={
-                if(this.#talentSelected.size!=) {
-                    this.hint('选择10个以内天赋');
+                if(this.#talentSelected.size!=10) {
+                    this.hint('选择10个天赋');
                     return;
                 }
                 this.#totalMax = 800 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
@@ -204,9 +204,9 @@ class App{
             .find('#random')
             .click(()=>{
                 let t = this.#totalMax;
-                const arr = [10, 10, 10, 10];
+                const arr = [800, 800, 800, 800];
                 while(t>0) {
-                    const sub = Math.round(Math.random() * (Math.min(t, 10) - 1)) + 1;
+                    const sub = Math.round(Math.random() * (Math.min(t, 800) - 1)) + 1;
                     while(true) {
                         const select = Math.floor(Math.random() * 4) % 4;
                         if(arr[select] - sub <0) continue;
@@ -215,10 +215,10 @@ class App{
                         break;
                     }
                 }
-                groups.CHR.set(10 - arr[0]);
-                groups.INT.set(10 - arr[1]);
-                groups.STR.set(10 - arr[2]);
-                groups.MNY.set(10 - arr[3]);
+                groups.CHR.set(800 - arr[0]);
+                groups.INT.set(800 - arr[1]);
+                groups.STR.set(800 - arr[2]);
+                groups.MNY.set(800 - arr[3]);
             });
 
         propertyPage
