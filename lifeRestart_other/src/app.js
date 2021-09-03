@@ -65,7 +65,7 @@ class App{
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
             <button id="random" class="mainbtn" style="top: 50%;">无限！</button>
             <ul id="talents" class="selectlist"></ul>
-            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择20个</button>
+            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
         </div>
         `);
 
@@ -87,8 +87,8 @@ class App{
                                 li.removeClass('selected')
                                 this.#talentSelected.delete(talent);
                             } else {
-                                if(this.#talentSelected.size==20) {
-                                    this.hint('选择20个以内天赋');
+                                if(this.#talentSelected.size==10) {
+                                    this.hint('选择10个以内天赋');
                                     return;
                                 }
 
@@ -115,8 +115,8 @@ class App{
         talentPage
             .find('#next')
             .click(()=>{
-                if(this.#talentSelected.size!=20) {
-                    this.hint('选择20个天赋');
+                if(this.#talentSelected.size!=10) {
+                    this.hint('选择10个天赋');
                     return;
                 }
                 this.#totalMax = 2000 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
@@ -189,10 +189,10 @@ class App{
             return {group, get, set};
         }
 
-        groups.CHR = getBtnGroups("颜值", 0, 800); // 颜值 charm CHR
-        groups.INT = getBtnGroups("智力", 0, 800); // 智力 intelligence INT
-        groups.STR = getBtnGroups("体质", 0, 800); // 体质 strength STR
-        groups.MNY = getBtnGroups("家境", 0, 800); // 家境 money MNY
+        groups.CHR = getBtnGroups("颜值", 0, 2000); // 颜值 charm CHR
+        groups.INT = getBtnGroups("智力", 0, 2000); // 智力 intelligence INT
+        groups.STR = getBtnGroups("体质", 0, 2000); // 体质 strength STR
+        groups.MNY = getBtnGroups("家境", 0, 2000); // 家境 money MNY
 
         const ul = propertyPage.find('#propertyAllocation');
 
@@ -308,7 +308,7 @@ class App{
                 this.#life.talentExtend(this.#selectedExtendTalent);
                 this.#selectedExtendTalent = null;
                 this.#talentSelected.clear();
-                this.#totalMax = 2000;
+                this.#totalMax = 2500;
                 this.#isEnd = false;
                 this.switch('index');
             });
@@ -346,7 +346,7 @@ class App{
                 clear: ()=>{
                     talentPage.find('ul.selectlist').empty();
                     talentPage.find('#random').show();
-                    this.#totalMax = 2000;
+                    this.#totalMax = 2500;
                 },
             },
             property: {
