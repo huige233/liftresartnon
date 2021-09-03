@@ -490,4 +490,5 @@
         }
     };
     window.App = App;
+    const app = new App();
 })(window);
