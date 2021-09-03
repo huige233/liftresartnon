@@ -87,8 +87,8 @@ class App{
                                 li.removeClass('selected')
                                 this.#talentSelected.delete(talent);
                             } else {
-                                if(this.#talentSelected.size==10) {
-                                    this.hint('选择10个以内天赋');
+                                if(this.#talentSelected.size==20) {
+                                    this.hint('选择20个以内天赋');
                                     return;
                                 }
 
@@ -115,8 +115,8 @@ class App{
         talentPage
             .find('#next')
             .click(()=>{
-                if(this.#talentSelected.size!=10) {
-                    this.hint('选择10个天赋');
+                if(this.#talentSelected.size!=20) {
+                    this.hint('选择20个天赋');
                     return;
                 }
                 this.#totalMax = 2000 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
