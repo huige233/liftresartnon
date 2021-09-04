@@ -42,7 +42,7 @@
         talentRandom(include) {
             // 1000, 100, 10, 1
             const talentList = {};
-            for(const talentId in this.talents) {
+            for(const talentId in this.#talents) {
                 const { id, grade, name, description } = this.talents[talentId];
                 if(id == include) {
                     include = { grade, name, description, id };
@@ -52,7 +52,7 @@
                 else talentList[grade].push({ grade, name, description, id });
             }
 
-            return new Array(130)
+            return new Array(131)
                 .fill(1).map((v, i)=>{
                     if(!i && include) return include;
                     const gradeRandom = Math.random();
