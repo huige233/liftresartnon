@@ -128,6 +128,7 @@ class App{
         <div id="main">
             <div class="head" style="font-size: 1.6rem">
                 调整初始属性(请直接点数字框输入)<br>
+	        可以不分配完<br>
                 <div id="total" style="font-size:1rem; font-weight:normal;">可用属性点：0</div>
             </div>
 			<ul id="propertyAllocation" class="propinitial"></ul>
@@ -224,7 +225,7 @@ class App{
         propertyPage
             .find('#start')
             .click(()=>{
-                if(total()!=this.#totalMax) {
+                if(total()<0) {
                     this.hint(`你还有${this.#totalMax-total()}属性点没有分配完`);
                     return;
                 }
