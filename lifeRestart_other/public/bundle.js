@@ -6027,8 +6027,8 @@
                 key: "initPages",
                 value: function() {
                     var t = this
-                      , e = $('\n        <div id="main">\n            <div id="title">\n                人生重开模拟器<br>\n                <div style="font-size:1.5rem; font-weight:normal;">加载中...</div>\n            </div>\n        </div>\n        ')
-                      , r = $('\n        <div id="main">\n            <div id="cnt" class="head">已重开1次</div>\n            <button id="rank">排行榜</button>\n            <button id="themeToggleBtn">黑</button>\n            <div id="title">\n                人生重开模拟器<br>\n                <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>\n            </div>\n            <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>\n        </div>\n        ');
+                      , e = $('\n        <div id="main">\n            <div id="title">\n                人生重开模拟器(完全破解版)<br>\n                <div style="font-size:1.5rem; font-weight:normal;">加载中...</div>\n            </div>\n        </div>\n        ')
+                      , r = $('\n        <div id="main">\n            <div id="cnt" class="head">已重开1次</div>\n            <button id="rank">排行榜</button>\n            <button id="themeToggleBtn">黑</button>\n            <div id="title">\n                人生重开模拟器(完全破解版)<br>\n                <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>\n            </div>\n            <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>\n        </div>\n        ');
                     this.setTheme(localStorage.getItem("theme")),
                     r.find("#restart").click((function() {
                         return t.switch("talent")
@@ -6156,7 +6156,7 @@
                         t.switch("property")) : t.hint("...")
                     }
                     ));
-                    var a = $('\n        <div id="main">\n            <div class="head" style="font-size: 1.6rem">\n                调整初始属性<br>\n                <div id="total" style="font-size:1rem; font-weight:normal;">可用属性点：0</div>\n            </div>\n            <ul id="propertyAllocation" class="propinitial"></ul>\n            <button id="random" class="mainbtn" style="top:auto; bottom:7rem">随机分配</button>\n            <button id="start" class="mainbtn" style="top:auto; bottom:0.1rem">开始新人生</button>\n        </div>\n        ')
+                    var a = $('\n        <div id="main">\n            <div class="head" style="font-size: 1.6rem">\n                调整初始属性<br>\n    可以不点完<br>\n            <div id="total" style="font-size:1rem; font-weight:normal;">可用属性点：0</div>\n            </div>\n            <ul id="propertyAllocation" class="propinitial"></ul>\n            <button id="random" class="mainbtn" style="top:auto; bottom:7rem">随机分配</button>\n            <button id="start" class="mainbtn" style="top:auto; bottom:0.1rem">开始新人生</button>\n        </div>\n        ')
                       , c = {}
                       , s = function() {
                         var t = 0;
