@@ -6232,7 +6232,7 @@
                     }
                     )),
                     a.find("#start").click((function() {
-                        s() < 2000 ? t.hint("你还有".concat(rt(t, ct) - s(), "属性点没有分配完")) : s() > rt(t, ct) ? t.hint("你多使用了".concat(s() - rt(t, ct), "属性点")) : (rt(t, ot).restart({
+                        s() > 3000 ? t.hint("你还有".concat(rt(t, ct) - s(), "属性点没有分配完")) : s() > rt(t, ct) ? t.hint("你多使用了".concat(s() - rt(t, ct), "属性点")) : (rt(t, ot).restart({
                             CHR: c.CHR.get(),
                             INT: c.INT.get(),
                             STR: c.STR.get(),
