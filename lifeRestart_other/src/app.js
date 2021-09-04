@@ -490,7 +490,7 @@
         }
     };
 	setTimeout(function(){
-        var a =new App();
+        var app =new App();
         app.initial();
          })
         window.App = App;
