@@ -42,8 +42,8 @@
         talentRandom(include) {
             // 1000, 100, 10, 1
             const talentList = {};
-            for(const talentId in this.#talents) {
-                const { id, grade, name, description } = this.talents[talentId];
+            for(const talentId in this.talents) {
+                const { grade, name, description, id  } = this.talents[talentId];
                 if(id == include) {
                     include = { grade, name, description, id };
                     continue;
