@@ -25,7 +25,6 @@
                 <div id="main">
                     <div id="title">
                         人生重开模拟器<br>
-			<div style="font-size:1.5rem; font-weight:normal;">原版：http://liferestart.syaro.io/view/</div>
                         <div style="font-size:1.5rem; font-weight:normal;">加载中...</div>
                     </div>
                 </div>
@@ -33,16 +32,15 @@
 
             // Index
             var indexPage = $(`
-        <div id="main">
-            <div id="cnt" class="head">已重开1次</div>
-            <button id="rank">排行榜</button>
-            <div id="title">
-                人生重开模拟器(破解版？)<br>
-                <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了<br></div>
-                <div style="font-size:1.5rem; font-weight:normal;">原版：http://liferestart.syaro.io/view/</div>
-            </div>
-            <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>
-        </div>
+                <div id="main">
+                    <div id="cnt" class="head">已重开1次</div>
+                    <button id="rank">排行榜</button>
+                    <div id="title">
+                        人生重开模拟器<br>
+                        <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>
+                    </div>
+                    <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>
+                </div>
             `);
 
             indexPage.find('#restart').click(function(){
@@ -57,9 +55,9 @@
             const talentPage = $(`
                 <div id="main">
                     <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
-                    <button id="random" class="mainbtn" style="top: 50%;">无限！</button>
+                    <button id="random" class="mainbtn" style="top: 50%;">10连抽！</button>
                     <ul id="talents" class="selectlist"></ul>
-                    <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">随便选</button>
+                    <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
                 </div>
             `);
 
@@ -88,8 +86,8 @@
                                 this.talentSelected.splice(inx,1);
                             }
                         } else {
-                            if(this.talentSelected.length==131) {
-                                this.hint('随便选');
+                            if(this.talentSelected.length==3) {
+                                this.hint('只能选3个天赋');
                                 return;
                             }
 
@@ -119,11 +117,11 @@
                 });
             }.bind(this));
             talentPage.find('#next').click(function (){
-                if(this.talentSelected.length>131) {
-                    this.hint('...');
+                if(this.talentSelected.length!=3) {
+                    this.hint('请选择3个天赋');
                     return;
                 }
-                this.totalMax = 2000 + this.life.getTalentAllocationAddition(this.talentSelected.map(function(item){return item.id}));
+                this.totalMax = 20 + this.life.getTalentAllocationAddition(this.talentSelected.map(function(item){return item.id}));
                 this.switch('property');
             }.bind(this));
 
@@ -194,10 +192,10 @@
                 return {group, get, set};
             }.bind(this);
 
-            groups.CHR = getBtnGroups("颜值", 0, 2000); // 颜值 charm CHR
-            groups.INT = getBtnGroups("智力", 0, 2000); // 智力 intelligence INT
-            groups.STR = getBtnGroups("体质", 0, 2000); // 体质 strength STR
-            groups.MNY = getBtnGroups("家境", 0, 2000); // 家境 money MNY
+            groups.CHR = getBtnGroups("颜值", 0, 10); // 颜值 charm CHR
+            groups.INT = getBtnGroups("智力", 0, 10); // 智力 intelligence INT
+            groups.STR = getBtnGroups("体质", 0, 10); // 体质 strength STR
+            groups.MNY = getBtnGroups("家境", 0, 10); // 家境 money MNY
 
             var ul = propertyPage.find('#propertyAllocation');
 
@@ -207,9 +205,9 @@
 
             propertyPage.find('#random').click(function (){
                 var t = this.totalMax;
-                var arr = [2000, 2000, 2000, 2000];
+                var arr = [10, 10, 10, 10];
                 while(t>0) {
-                    var sub = Math.round(Math.random() * (Math.min(t, 2000) - 1)) + 1;
+                    var sub = Math.round(Math.random() * (Math.min(t, 10) - 1)) + 1;
                     while(true) {
                         var select = Math.floor(Math.random() * 4) % 4;
                         if(arr[select] - sub <0) continue;
@@ -218,14 +216,14 @@
                         break;
                     }
                 }
-                groups.CHR.set(2000 - arr[0]);
-                groups.INT.set(2000 - arr[1]);
-                groups.STR.set(2000 - arr[2]);
-                groups.MNY.set(2000 - arr[3]);
+                groups.CHR.set(10 - arr[0]);
+                groups.INT.set(10 - arr[1]);
+                groups.STR.set(10 - arr[2]);
+                groups.MNY.set(10 - arr[3]);
             }.bind(this));
 
             propertyPage.find('#start').click(function (){
-                if(total()>this.totalMax) {
+                if(total()!=this.totalMax) {
                     this.hint(`你还有${this.totalMax-total()}属性点没有分配完`);
                     return;
                 }
@@ -305,7 +303,7 @@
                 this.life.talentExtend(this.selectedExtendTalent);
                 this.selectedExtendTalent = null;
                 this.talentSelected=[];
-                this.totalMax = 2000;
+                this.totalMax = 20;
                 this.isEnd = false;
                 this.switch('index');
             }.bind(this));
@@ -342,7 +340,7 @@
                     clear: function (){
                         talentPage.find('ul.selectlist').empty();
                         talentPage.find('#random').show();
-                        this.totalMax = 2000;
+                        this.totalMax = 20;
                     }.bind(this),
                 },
                 property: {
@@ -491,9 +489,7 @@
             localStorage.times = JSON.stringify(parseInt(v) || 0);
         }
     };
-	setTimeout(function(){
-        var app =new App();
-        app.initial();
-         })
-        window.App = App;
+	const app = new APP();
+	app.initial();
+    window.App = App;
 })(window);
