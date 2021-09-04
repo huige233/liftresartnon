@@ -489,7 +489,9 @@
             localStorage.times = JSON.stringify(parseInt(v) || 0);
         }
     };
-	var app = new APP();
-	app.initial();
+	setTimeout(fuinction(){
+        var a =new App();
+        app.initial();
+         })
         window.App = App;
 })(window);
