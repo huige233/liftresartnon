@@ -44,7 +44,6 @@
 }
 
 html {
-    background-color: #222831;
     font-family: PingFangSC, 'Noto Sans CJK SC', 'MS Yahei';
 }
 
@@ -68,23 +67,21 @@ body {
     white-space: nowrap;
     transform: translate(-50%,-50%);
     text-align: center;
-    color: #EEEEEE;
 }
 
 .mainbtn {
     position: fixed;
     top: 65%;
     left: 50%;
-    padding: 0.5rem 1.5rem;
-    border: 1px #EEEEEE solid;
+	padding: 0.5rem 1.5rem;
+    border: 1px #ccc solid;
     border-radius: 0.2rem;
-    background-color:#393E46;
+    background-color:white;
     font-size: 1.6rem;
     white-space: nowrap;
     transform: translate(-50%,-50%);
     cursor: pointer;
     z-index:2;
-    color: #EEEEEE;
 }
 
 .mainbtn:hover {
@@ -109,7 +106,7 @@ body {
     border-radius: 0.2rem;
     background-color:lightsteelblue;
     font-size: 1.4rem;
-    color: #EEEEEE;
+    color: white;
     cursor: pointer;
     z-index:2;
 }
@@ -121,9 +118,9 @@ body {
     padding: 0.1rem 1rem;
     border: none;
     border-radius: 0.2rem;
-    background-color:#EEEEEE;
+    background-color:#222831;
     font-size: 1.4rem;
-    color: #222831;
+    color: #EEEEEE;
     cursor: pointer;
     z-index:2;
 }
@@ -136,7 +133,6 @@ body {
     white-space: nowrap;
     transform: translateX(-50%);
     text-align: center;
-    color: #EEEEEE;
 }
 
 .judge,
@@ -184,7 +180,7 @@ body {
 
 .selectlist > li {
     position: relative;
-    border: 1px #EEEEEE solid;
+    border: 1px #ccc solid;
     display: inline-block;
     width: 95%;
     margin: 0.1rem auto;
@@ -192,94 +188,89 @@ body {
     text-align: center;
     border-radius: 0.2rem;
     cursor: pointer;
-    color: #EEEEEE;
-    user-select: none;
 }
 
 .grade0b {
-	background-color: #464646;
-	border: #f8f8f8 2px solid !important;
+	background-color: #ededed;
+	border: #c5c5c5 2px solid !important;
 }
+
 .grade1b {
-	background-color: #6495ed;
-	border: #f8f8f8 2px solid !important;
+	background-color: #7ea5ec;
+	border: #c5c5c5 2px solid !important;
 }
+
 .grade2b {
 	background-color: #e2a7ff;
-	border: #f8f8f8 2px solid !important;
+	border: #c5c5c5 2px solid !important;
 }
+
 .grade3b {
 	background-color: #ffa07a;
-	border: #f8f8f8 2px solid !important;
+	border: #c5c5c5 2px solid !important;
 }
 
 @media (min-width:1080px) {
     .grade0b:hover {
-    	background-color: #c0c0c0;
-        color: #3b3b3b;
-    	transition: all .3s ease 0s;
+        background-color: #868686;
+        transition: all .3s ease 0s;
     }
+
     .grade1b:hover {
-    	background-color: #87cefa;
-        color: #3b3b3b;
-    	transition: all .3s ease 0s;
+        background-color: #5d90ff;
+        transition: all .3s ease 0s;
     }
+
     .grade2b:hover {
-    	background-color: #e7beff;
-        color: #3b3b3b;
-    	transition: all .3s ease 0s;
+        background-color: #bc72ec;
+        transition: all .3s ease 0s;
     }
+
     .grade3b:hover {
-    	background-color: #f7a989;
-        color: #3b3b3b;
-    	transition: all .3s ease 0s;
+        background-color: #e09074;
+        transition: all .3s ease 0s;
     }
 }
 .grade0b.selected {
-    background-color: #c0c0c0 !important;
-    box-shadow: #ccc 0px 0px 10px;
-    color: #3b3b3b;
+    background-color: #444;
+    box-shadow: #bbb 0px 0px 10px;
+    color: #fff;
 }
 
 .grade1b.selected {
-    background-color: #87cefa !important;
-    box-shadow: #ccc 0px 0px 10px;
-    color: #3b3b3b;
+    background-color: #407dec;
+    box-shadow: #bbb 0px 0px 10px;
+    color: #fff;
 }
 
 .grade2b.selected {
-	background-color: #e7beff !important;
-    box-shadow: #ccc 0px 0px 10px;
-    color: #3b3b3b;
+	background-color: #b362e7;
+    box-shadow: #bbb 0px 0px 10px;
+    color: #fff;
 }
 
 .grade3b.selected {
-    background-color: #f1bfac !important;
-    box-shadow: #ccc 0px 0px 10px;
-    color: #3b3b3b;
+    background-color: #ff7f4d;
+    box-shadow: #bbb 0px 0px 10px;
+    color: #fff;
 }
 
 .judge > li.grade1 span,
 .judge > li.grade1{
-    background-color: #87cefa;
+    background-color: #7ea5ec;
 }
 .judge > li.grade2 span,
 .judge > li.grade2{
-    background-color: #e7beff;
+    background-color: #e2a7ff;
 }
 .judge > li.grade3 span,
 .judge > li.grade3{
-    background-color: #f7a989;
+    background-color: #ffa07a;
 }
 
 .propinitial {
     top: 5rem;
     bottom: 14rem;
-}
-
-.propbtn:hover{
-	color: #5c5c5c;
-	transition: all .2s ease 0s;
 }
 
 .propinitial > li {
@@ -291,7 +282,6 @@ body {
     text-align: center;
     border-radius: 0.2rem;
     padding: 0.2rem;
-    color: #EEEEEE;
 }
 
 .propinitial > li > input {
@@ -301,22 +291,25 @@ body {
     padding: 0;
     text-align: center;
     font-size: 2rem;
-    border: 0.1rem #EEEEEE solid;
-    background-color: #393E46;
-    color: #EEEEEE;
+    border: 0.1rem #ccc solid;
 }
 
 .propbtn {
     position: relative;
     cursor: pointer;
     font-size: 2rem;
-    color: #EEEEEE;
+    user-select: none;
+}
+
+.propbtn:hover{
+	color: #5c5c5c;
+	transition: all .2s ease 0s;
 }
 
 .lifeTrajectory {
-	border: 1px #9b9b9b solid;
-    background-color: #393E46;
-	border-radius: 10px;
+    border: 1px #a7a7a7 solid;
+    border-radius: 10px;
+    background-color: #ffffff;
 }
 
 .judge > li,
@@ -326,9 +319,9 @@ body {
     margin: 0.5rem 0;
     padding: 0.5rem 1rem 0.5rem 6rem;
     font-size: 1.4rem;
-    background-color: #4a5361;
-    box-shadow: #EEEEEE 0 0 0.4rem;
-    color: #EEEEEE;
+    background-color: #fff;
+    box-shadow: #a7a7a7 0 0 0.4rem;
+    user-select: none;
 }
 
 .judge > li > span,
@@ -340,7 +333,7 @@ body {
 }
 
 .judge > li {
-    box-shadow: #EEEEEE 0 0 0.4rem;
+    box-shadow: lightgray 0 0 0.4rem;
     width: calc(100% - 9rem);
     margin: 0.5rem;
     padding: 0.5rem 1rem 0.5rem 7rem;
@@ -486,7 +479,7 @@ i {
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
- .eva-animation {
+  .eva-animation {
     animation-duration: 1s;
     animation-fill-mode: both; }
 
@@ -568,5 +561,5 @@ i {
       opacity: 1; } }
 
 ::-webkit-scrollbar {
-    width: 0 !important
+	width: 0 !important
 }
