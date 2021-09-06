@@ -106,6 +106,10 @@ class Property {
     getRecord() {
         return clone(this.#record);
     }
+    
+    getLastRecord() {
+        return clone(this.#record[this.#record.length - 1]);
+    }
 
     change(prop, value) {
         if(Array.isArray(value)) {
