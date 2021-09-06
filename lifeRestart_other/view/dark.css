@@ -156,7 +156,7 @@ html {
   overflow: auto;
   transform: translateX(-50%);
   display: flex;
-  color: white;
+  color: dark;
 }
 
 .lifeProperty > li {
