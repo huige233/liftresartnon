@@ -15,11 +15,10 @@ class Life {
     #triggerTalents;
 
     async initial() {
-        const [age, talents, events] = await Promise.all([
-          json('age'),
-          json('talents'),
-          json('events'),
-        ])
+        const age = await json('age');
+        const talents = await json('talents');
+        const events = await json('events');
+
         this.#property.initial({age});
         this.#talent.initial({talents});
         this.#event.initial({events});
@@ -109,10 +108,6 @@ class Life {
 
     getRecord() {
         return this.#property.getRecord();
-    }
-
-    getLastRecord() {
-        return this.#property.getLastRecord();
     }
 
     exclusive(talents, exclusive) {

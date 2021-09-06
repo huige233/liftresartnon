@@ -1,32 +1,14 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
   entry: './src/index.js',
-  devtool: 'eval-cheap-module-source-map',
-  devServer: {
-    static: [
-      {
-        directory: path.join(__dirname, 'data'),
-        publicPath: '/data',
-      },
-      {
-        directory: path.join(__dirname, 'public'),
-        publicPath: '/public',
-      },
-      {
-        directory: path.join(__dirname, 'view'),
-        publicPath: '/view',
-      },
-    ],
-  },
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
-    clean: true,
   },
   // resolve: {
-  //   extensions: ['.js'],
+  //   extensions: [".js"],
   // },
   module: {
     rules: [{
