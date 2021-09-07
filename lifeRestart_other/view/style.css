@@ -101,20 +101,6 @@ html {
     z-index:2;
 }
 
-#themeToggleBtn {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    padding: 0.1rem 1rem;
-    border: none;
-    border-radius: 0.2rem;
-    background-color:#222831;
-    font-size: 1.4rem;
-    color: #EEEEEE;
-    cursor: pointer;
-    z-index:2;
-}
-
 .head {
     position: fixed;
     font-size: 1.4rem;
@@ -182,13 +168,6 @@ html {
     background-color: lightsalmon !important;
 }
 
-.grade1b,
-.grade2b,
-.grade3b {
-  padding-left: 1.5rem;
-  box-sizing: border-box;
-}
-
 .selected {
     background-color: gray;
     color: white;
@@ -211,8 +190,8 @@ html {
 }
 
 .propinitial > li > input {
-    height: 3.0rem;
-    width: 4.2rem;
+    height: 2.2rem;
+    width: 2.2rem;
     margin: 0 0.5rem;
     padding: 0;
     text-align: center;
