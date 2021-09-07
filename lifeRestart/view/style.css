@@ -73,7 +73,7 @@ html {
     border: 1px #ccc solid;
     border-radius: 0.2rem;
     background-color:white;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     white-space: nowrap;
     transform: translate(-50%,-50%);
     cursor: pointer;
@@ -97,6 +97,20 @@ html {
     background-color:lightsteelblue;
     font-size: 1.4rem;
     color: white;
+    cursor: pointer;
+    z-index:2;
+}
+
+#themeToggleBtn {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.1rem 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color:#222831;
+    font-size: 1.4rem;
+    color: #EEEEEE;
     cursor: pointer;
     z-index:2;
 }
@@ -168,13 +182,20 @@ html {
     background-color: lightsalmon !important;
 }
 
+.grade1b,
+.grade2b,
+.grade3b {
+  padding-left: 1.5rem;
+  box-sizing: border-box;
+}
+
 .selected {
     background-color: gray;
     color: white;
 }
 
 .propinitial {
-    top: 7rem;
+    top: 6rem;
     bottom: 14rem;
 }
 
@@ -190,9 +211,9 @@ html {
 }
 
 .propinitial > li > input {
-    height: 2.2rem;
+    height: 3.0rem;
     width: 4.2rem;
-    margin: 0 0.8rem;
+    margin: 0 0.5rem;
     padding: 0;
     text-align: center;
     font-size: 2rem;
