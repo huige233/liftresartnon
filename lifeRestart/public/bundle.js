@@ -5464,7 +5464,7 @@
                             id: i
                         }
                     }
-                    return new Array(130).fill(1).map((function(r, n) {
+                    return new Array(20).fill(1).map((function(r, n) {
                         if (!n && t)
                             return t;
                         Math.random();
@@ -6027,8 +6027,8 @@
                 key: "initPages",
                 value: function() {
                     var t = this
-                      , e = $('\n        <div id="main">\n            <div id="title">\n                人生重开模拟器(完全破解版)<br>\n                <div style="font-size:1.5rem; font-weight:normal;">加载中...</div>\n            </div>\n        </div>\n        ')
-                      , r = $('\n        <div id="main">\n            <div id="cnt" class="head">已重开1次</div>\n            <button id="rank">排行榜</button>\n            <button id="themeToggleBtn">黑</button>\n            <div id="title">\n                人生重开模拟器(完全破解版)<br>\n                <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>\n            </div>\n            <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>\n        </div>\n        ');
+                      , e = $('\n        <div id="main">\n            <div id="title">\n                人生重开模拟器(限制破解版)<br>\n                <div style="font-size:1.5rem; font-weight:normal;">加载中...</div>\n            </div>\n        </div>\n        ')
+                      , r = $('\n        <div id="main">\n            <div id="cnt" class="head">已重开1次</div>\n            <button id="rank">排行榜</button>\n            <button id="themeToggleBtn">黑</button>\n            <div id="title">\n                人生重开模拟器(限制破解版)<br>\n                <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>\n            </div>\n            <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>\n        </div>\n        ');
                     this.setTheme(localStorage.getItem("theme")),
                     r.find("#restart").click((function() {
                         return t.switch("talent")
@@ -6043,7 +6043,7 @@
                         t.setTheme(localStorage.getItem("theme"))
                     }
                     ));
-                    var n = $('\n        <div id="main">\n            <div class="head" style="font-size: 1.6rem">天赋抽卡</div>\n            <button id="random" class="mainbtn" style="top: 50%;">无限！</button>\n            <ul id="talents" class="selectlist"></ul>\n            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">你看着选</button>\n        </div>\n        ')
+                    var n = $('\n        <div id="main">\n            <div class="head" style="font-size: 1.6rem">天赋抽卡</div>\n            <button id="random" class="mainbtn" style="top: 50%;">20连抽！</button>\n            <ul id="talents" class="selectlist"></ul>\n            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">选8个</button>\n        </div>\n        ')
                       , i = function(t) {
                         var e = t.grade
                           , r = t.name
@@ -6061,7 +6061,7 @@
                                     n.removeClass("selected"),
                                     rt(t, ut).delete(r);
                                 else {
-                                    if (131 == rt(t, ut).size)
+                                    if (8 == rt(t, ut).size)
                                         return void t.hint("...");
                                     var e = rt(t, ot).exclusive(Array.from(rt(t, ut)).map((function(t) {
                                         return t.id
@@ -6149,7 +6149,7 @@
                     }
                     )),
                     n.find("#next").click((function() {
-                        131 > rt(t, ut).size ? (nt(t, ct, 2000 + rt(t, ot).getTalentAllocationAddition(Array.from(rt(t, ut)).map((function(t) {
+                        8 > rt(t, ut).size ? (nt(t, ct, 800 + rt(t, ot).getTalentAllocationAddition(Array.from(rt(t, ut)).map((function(t) {
                             return t.id
                         }
                         )))),
@@ -6208,16 +6208,16 @@
                             set: v
                         }
                     };
-                    c.CHR = f("颜值", 0, 2000),
-                    c.INT = f("智力", 0, 2000),
-                    c.STR = f("体质", 0, 2000),
-                    c.MNY = f("家境", 0, 2000);
+                    c.CHR = f("颜值", 0, 800),
+                    c.INT = f("智力", 0, 800),
+                    c.STR = f("体质", 0, 800),
+                    c.MNY = f("家境", 0, 800);
                     var v = a.find("#propertyAllocation");
                     for (var d in c)
                         v.append(c[d].group);
                     a.find("#random").click((function() {
-                        for (var e = rt(t, ct), r = [2000, 2000, 2000, 2000]; e > 0; )
-                            for (var n = Math.round(Math.random() * (Math.min(e, 2000) - 1)) + 1; ; ) {
+                        for (var e = rt(t, ct), r = [800, 800, 800, 800]; e > 0; )
+                            for (var n = Math.round(Math.random() * (Math.min(e, 800) - 1)) + 1; ; ) {
                                 var i = Math.floor(4 * Math.random()) % 4;
                                 if (!(r[i] - n < 0)) {
                                     r[i] -= n,
@@ -6225,10 +6225,10 @@
                                     break
                                 }
                             }
-                        c.CHR.set(2000 - r[0]),
-                        c.INT.set(2000 - r[1]),
-                        c.STR.set(2000 - r[2]),
-                        c.MNY.set(2000 - r[3])
+                        c.CHR.set(800 - r[0]),
+                        c.INT.set(800 - r[1]),
+                        c.STR.set(800 - r[2]),
+                        c.MNY.set(800 - r[3])
                     }
                     )),
                     a.find("#start").click((function() {
