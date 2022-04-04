@@ -50,7 +50,7 @@ async function debug() {
             // debugger
             throw e;
         }
-        lifeTrajectory.push(trajectory);
+        lifeTrajectory.push(lifeTrajectory);
         const { age, content } = trajectory;
         console.debug(
             `---------------------------------`,
