@@ -16,4 +16,4 @@ xp版本  https://huige233.github.io/liftresartnon/lifeRestart_xp/view/
 
 non版本  https://huige233.github.io/liftresartnon/lifeRestart_other/view/
 
-请不要过度的选取天赋 会导致看不到选点
+~~请不要过度的选取天赋 会导致看不到选点~~ fixed
