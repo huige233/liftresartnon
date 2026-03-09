@@ -1,0 +1,59 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Default settings for all files
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# JavaScript files
+[*.js]
+indent_size = 4
+indent_style = space
+
+# HTML files
+[*.html]
+indent_size = 2
+indent_style = space
+
+# CSS files
+[*.css]
+indent_size = 2
+indent_style = space
+
+# JSON files
+[*.json]
+indent_size = 2
+indent_style = space
+
+# Markdown files
+[*.md]
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = false
+
+# Batch files
+[*.bat]
+indent_size = 4
+indent_style = tab
+
+# PowerShell files
+[*.ps1]
+indent_size = 4
+indent_style = space
+
+# YAML files
+[*.yml]
+indent_size = 2
+indent_style = space
+
+# Shell scripts
+[*.sh]
+indent_size = 2
+indent_style = space

@@ -1,4 +1,4 @@
-import { weightRandom } from './functions/util.js'
+import { weightRandom } from './functions/util.js';
 import Property from './property.js';
 import Event from './event.js';
 import Talent from './talent.js';
@@ -20,27 +20,24 @@ class Life {
 
     async initial() {
         const [age, talents, events, achievements] = await Promise.all([
-          json('age'),
-          json('talents'),
-          json('events'),
-          json('achievement'),
-        ])
-        this.#property.initial({age});
-        this.#talent.initial({talents});
-        this.#event.initial({events});
-        this.#achievement.initial({achievements});
+            json('age'),
+            json('talents'),
+            json('events'),
+            json('achievement'),
+        ]);
+        this.#property.initial({ age });
+        this.#talent.initial({ talents });
+        this.#event.initial({ events });
+        this.#achievement.initial({ achievements });
     }
 
     restart(allocation) {
         this.#triggerTalents = {};
         const contents = this.talentReplace(allocation.TLT);
         this.#property.restart(allocation);
-        this.doTalent()
+        this.doTalent();
         this.#property.restartLastStep();
-        this.#achievement.achieve(
-            this.#achievement.Opportunity.START,
-            this.#property
-        )
+        this.#achievement.achieve(this.#achievement.Opportunity.START, this.#property);
         return contents;
     }
 
@@ -53,7 +50,7 @@ class Life {
     }
 
     next() {
-        const {age, event, talent} = this.#property.ageNext();
+        const { age, event, talent } = this.#property.ageNext();
 
         const talentContent = this.doTalent(talent);
         const eventContent = this.doEvent(this.random(event));
@@ -61,37 +58,44 @@ class Life {
         const isEnd = this.#property.isEnd();
 
         const content = [talentContent, eventContent].flat();
-        this.#achievement.achieve(
-            this.#achievement.Opportunity.TRAJECTORY,
-            this.#property
-        )
+        this.#achievement.achieve(this.#achievement.Opportunity.TRAJECTORY, this.#property);
         return { age, content, isEnd };
     }
 
     talentReplace(talents) {
         const result = this.#talent.replace(talents);
         const contents = [];
-        for(const id in result) {
+        for (const id in result) {
             talents.push(result[id]);
             const source = this.#talent.get(id);
             const target = this.#talent.get(result[id]);
             contents.push({
                 type: 'talentReplace',
-                source, target
+                source,
+                target,
             });
         }
         return contents;
     }
 
     doTalent(talents) {
-        if(talents) this.#property.change(this.#property.TYPES.TLT, talents);
-        talents = this.#property.get(this.#property.TYPES.TLT)
-            .filter(talentId => this.getTalentCurrentTriggerCount(talentId) < this.#talent.get(talentId).max_triggers);
+        if (talents) {
+            this.#property.change(this.#property.TYPES.TLT, talents);
+        }
+        talents = this.#property
+            .get(this.#property.TYPES.TLT)
+            .filter(
+                talentId =>
+                    this.getTalentCurrentTriggerCount(talentId) <
+                    this.#talent.get(talentId).max_triggers
+            );
 
         const contents = [];
-        for(const talentId of talents) {
+        for (const talentId of talents) {
             const result = this.#talent.do(talentId, this.#property);
-            if(!result) continue;
+            if (!result) {
+                continue;
+            }
             this.#triggerTalents[talentId] = this.getTalentCurrentTriggerCount(talentId) + 1;
             const { effect, name, description, grade } = result;
             contents.push({
@@ -99,8 +103,10 @@ class Life {
                 name,
                 grade,
                 description,
-            })
-            if(!effect) continue;
+            });
+            if (!effect) {
+                continue;
+            }
             this.#property.effect(effect);
         }
         return contents;
@@ -114,16 +120,16 @@ class Life {
             type: this.#property.TYPES.EVT,
             description,
             postEvent,
+        };
+        if (next) {
+            return [content, this.doEvent(next)].flat();
         }
-        if(next) return [content, this.doEvent(next)].flat();
         return [content];
     }
 
     random(events) {
         return weightRandom(
-            events.filter(
-                ([eventId])=>this.#event.check(eventId, this.#property)
-            )
+            events.filter(([eventId]) => this.#event.check(eventId, this.#property))
         );
     }
 
@@ -142,10 +148,7 @@ class Life {
     }
 
     getSummary() {
-        this.#achievement.achieve(
-            this.#achievement.Opportunity.SUMMARY,
-            this.#property
-        )
+        this.#achievement.achieve(this.#achievement.Opportunity.SUMMARY, this.#property);
         return {
             AGE: this.#property.get(this.#property.TYPES.HAGE),
             CHR: this.#property.get(this.#property.TYPES.HCHR),
@@ -167,27 +170,33 @@ class Life {
 
     getAchievements() {
         const ticks = {};
-        this.#property
-            .get(this.#property.TYPES.ACHV)
-            .forEach(([id, tick]) => ticks[id] = tick);
-        return this
-            .#achievement
+        this.#property.get(this.#property.TYPES.ACHV).forEach(([id, tick]) => (ticks[id] = tick));
+        return this.#achievement
             .list(this.#property)
-            .sort((
-                {id: a, grade: ag, hide: ah},
-                {id: b, grade: bg, hide: bh}
-            )=>{
+            .sort(({ id: a, grade: ag, hide: ah }, { id: b, grade: bg, hide: bh }) => {
                 a = ticks[a];
                 b = ticks[b];
-                if(a&&b) return b - a;
-                if(!a&&!b) {
-                    if(ah&&bh) return bg - ag;
-                    if(ah) return 1;
-                    if(bh) return -1;
+                if (a && b) {
+                    return b - a;
+                }
+                if (!a && !b) {
+                    if (ah && bh) {
+                        return bg - ag;
+                    }
+                    if (ah) {
+                        return 1;
+                    }
+                    if (bh) {
+                        return -1;
+                    }
                     return bg - ag;
                 }
-                if(!a) return 1;
-                if(!b) return -1;
+                if (!a) {
+                    return 1;
+                }
+                if (!b) {
+                    return -1;
+                }
             });
     }
 
@@ -205,18 +214,16 @@ class Life {
             achievement: CACHV,
             talentRate: CTLT / totalTalent,
             eventRate: CEVT / totalEvent,
-        }
+        };
     }
 
-    get times() { return this.#property?.get(this.#property.TYPES.TMS) || 0; }
+    get times() {
+        return this.#property?.get(this.#property.TYPES.TMS) || 0;
+    }
     set times(v) {
         this.#property?.set(this.#property.TYPES.TMS, v) || 0;
-        this.#achievement.achieve(
-            this.#achievement.Opportunity.END,
-            this.#property
-        )
+        this.#achievement.achieve(this.#achievement.Opportunity.END, this.#property);
     }
 }
 
 export default Life;
-

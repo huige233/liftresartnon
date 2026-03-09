@@ -1,11 +1,16 @@
 function clone(value) {
-    switch(typeof value) {
-        case 'object':
-            if(Array.isArray(value)) return value.map(v=>clone(v));
-            const newObj = {};
-            for(const key in value) newObj[key] = clone(value[key]);
-            return newObj;
-        default: return value;
+    switch (typeof value) {
+    case 'object':
+        if (Array.isArray(value)) {
+            return value.map(v => clone(v));
+        }
+        const newObj = {};
+        for (const key in value) {
+            newObj[key] = clone(value[key]);
+        }
+        return newObj;
+    default:
+        return value;
     }
 }
 
@@ -19,7 +24,7 @@ function min(...arr) {
 
 function sum(...arr) {
     let s = 0;
-    arr.flat().forEach(v=>s+=v);
+    arr.flat().forEach(v => (s += v));
     return s;
 }
 
@@ -30,14 +35,17 @@ function average(...arr) {
 
 function weightRandom(list) {
     let totalWeights = 0;
-    for(const [, weight] of list)
+    for (const [, weight] of list) {
         totalWeights += weight;
+    }
 
     let random = Math.random() * totalWeights;
-    for(const [id, weight] of list)
-        if((random-=weight)<0)
+    for (const [id, weight] of list) {
+        if ((random -= weight) < 0) {
             return id;
-    return list[list.length-1];
+        }
+    }
+    return list[list.length - 1];
 }
 
 function listRandom(list) {
