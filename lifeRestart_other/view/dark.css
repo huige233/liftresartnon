@@ -299,7 +299,8 @@ ul#total li .achievementtitle,
   list-style: none;
   flex: 1;
   padding: 1rem;
-  overflow: auto;
+  /* overflow: auto; */ 
+  /* 修復"选择太多天赋会看不到加点"的bug again */
 }
 
 .lifeProperty {
