@@ -1,13 +1,29 @@
 {
     "name": "life_restart",
+    "version": "1.0.0",
+    "description": "Life Restart Game - A text-based life simulation game",
     "type": "module",
     "bin": "repl/index.js",
+    "main": "src/index.js",
     "scripts": {
         "test": "node test",
+        "lint": "eslint src/ repl/ utils/ --ext .js",
+        "lint:fix": "eslint src/ repl/ utils/ --ext .js --fix",
+        "format": "prettier --write \"src/**/*.{js,jsx,json,css,md}\" \"repl/**/*.{js,jsx,json,css,md}\" \"utils/**/*.{js,jsx,json,css,md}\"",
+        "format:check": "prettier --check \"src/**/*.{js,jsx,json,css,md}\" \"repl/**/*.{js,jsx,json,css,md}\" \"utils/**/*.{js,jsx,json,css,md}\"",
         "xlsxTransform": "node utils/xlsxTransform.js data",
         "dev": "webpack serve --open /view/index.html",
-        "build": "webpack --mode production"
+        "build": "webpack --mode production",
+        "validate": "npm run lint && npm run format:check"
     },
+    "keywords": [
+        "life-restart",
+        "game",
+        "text-adventure",
+        "simulation"
+    ],
+    "author": "",
+    "license": "MIT",
     "dependencies": {
         "@babel/core": "^7.15.4",
         "@babel/preset-env": "^7.15.4",
@@ -18,6 +34,8 @@
         "xlsx": "^0.17.0"
     },
     "devDependencies": {
-        "webpack-cli": "^4.8.0"
+        "webpack-cli": "^4.8.0",
+        "eslint": "^8.57.0",
+        "prettier": "^3.2.5"
     }
 }

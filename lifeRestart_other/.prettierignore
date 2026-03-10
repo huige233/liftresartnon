@@ -1,0 +1,17 @@
+node_modules/
+public/
+lib/
+view/
+data/
+*.min.js
+*.json
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.ttf
+*.woff
+*.woff2
+bundle.js

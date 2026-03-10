@@ -1,0 +1,26 @@
+# 依赖文件
+node_modules/
+package-lock.json
+yarn.lock
+
+# 构建产物
+public/bundle.js
+
+# 编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 文档文件 (可选，根据需要保留)
+# *.md
