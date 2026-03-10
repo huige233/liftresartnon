@@ -295,7 +295,7 @@ ul#total li .achievementtitle,
   list-style: none;
   flex: 1;
   padding: 1rem;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 .lifeProperty {
